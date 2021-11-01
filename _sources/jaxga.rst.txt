@@ -1,0 +1,46 @@
+jaxga package
+=============
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   jaxga.flaxmodules
+   jaxga.ops
+
+Submodules
+----------
+
+jaxga.jaxga module
+------------------
+
+.. automodule:: jaxga.jaxga
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+jaxga.mv module
+---------------
+
+.. automodule:: jaxga.mv
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+jaxga.signatures module
+-----------------------
+
+.. automodule:: jaxga.signatures
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: jaxga
+   :members:
+   :undoc-members:
+   :show-inheritance:

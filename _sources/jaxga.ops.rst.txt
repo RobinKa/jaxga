@@ -1,0 +1,77 @@
+jaxga.ops package
+=================
+
+Submodules
+----------
+
+jaxga.ops.add module
+--------------------
+
+.. automodule:: jaxga.ops.add
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+jaxga.ops.dual module
+---------------------
+
+.. automodule:: jaxga.ops.dual
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+jaxga.ops.inverse module
+------------------------
+
+.. automodule:: jaxga.ops.inverse
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+jaxga.ops.keepnonzero module
+----------------------------
+
+.. automodule:: jaxga.ops.keepnonzero
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+jaxga.ops.multiply module
+-------------------------
+
+.. automodule:: jaxga.ops.multiply
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+jaxga.ops.reduce\_same module
+-----------------------------
+
+.. automodule:: jaxga.ops.reduce_same
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+jaxga.ops.select module
+-----------------------
+
+.. automodule:: jaxga.ops.select
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+jaxga.ops.simple\_exp module
+----------------------------
+
+.. automodule:: jaxga.ops.simple_exp
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: jaxga.ops
+   :members:
+   :undoc-members:
+   :show-inheritance:

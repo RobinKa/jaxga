@@ -1,0 +1,21 @@
+jaxga.flaxmodules package
+=========================
+
+Submodules
+----------
+
+jaxga.flaxmodules.mvproddense module
+------------------------------------
+
+.. automodule:: jaxga.flaxmodules.mvproddense
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: jaxga.flaxmodules
+   :members:
+   :undoc-members:
+   :show-inheritance:

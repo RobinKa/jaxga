@@ -28,14 +28,14 @@ jobs:
 
       - name: Run sphinx
         if: contains(github.ref, 'master')
-        run: sphinx-apidoc -o sphinx-docs jaxga sphinx-apidoc --full -A "Robin 'Tora' Kahlow" && cd sphinx-docs && make html
+        run: sphinx-apidoc -o docs src/jaxga sphinx-apidoc --full -A "Robin 'Tora' Kahlow" && cd docs && make html
 
       - name: Push documentation to pages
         if: contains(github.ref, 'master')
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
           branch: gh-pages
-          folder: 'sphinx-docs/_build/html'
+          folder: 'docs/_build/html'
 
       - name: Build dist
         run: python -m build

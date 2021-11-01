@@ -11,7 +11,7 @@ def stap_signature(b):
     return 0 if b == 0 else (1 if b == 1 else -1)
 
 def cga_signature(b):
-    """-+(...+)"""
+    """+-(...+)"""
     return 1 if b == 0 else (-1 if b == 1 else 1)
 
 def positive_signature(b):

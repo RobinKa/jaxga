@@ -61,7 +61,7 @@ def is_scalar_index(b):
 
 
 def pseudoscalar_index(dims):
-    return tuple(str(d) for d in range(dims))
+    return tuple(range(dims))
 
 
 def dual_blade_index(blade_index, dims):

@@ -41,7 +41,7 @@ def _collapse_same(x):
 
 
 @cache
-def _reduce_bases(a, b, metric):
+def reduce_bases(a, b, metric):
     combined = list(a + b)
 
     # Bring into normal order:
@@ -67,7 +67,7 @@ def pseudoscalar_index(dims):
 def dual_blade_index(blade_index, dims):
     pss = pseudoscalar_index(dims)
     blade_index_reverse = tuple(reversed(blade_index))
-    return _reduce_bases(blade_index_reverse, pss, positive_signature)
+    return reduce_bases(blade_index_reverse, pss, positive_signature)
 
 
 def reverse_indices(blade_indices):

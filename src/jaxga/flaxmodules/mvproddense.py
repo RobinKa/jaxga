@@ -6,8 +6,8 @@ import jax.numpy as jnp
 
 
 class MVProdDense(nn.Module):
-    x_ind: Sequence[Sequence[str]]
-    w_ind: Sequence[Sequence[str]]
+    x_ind: Sequence[Sequence[int]]
+    w_ind: Sequence[Sequence[int]]
     units: int
     w_init: Callable = nn.initializers.lecun_normal()
     signature: Callable[[int], float] = positive_signature

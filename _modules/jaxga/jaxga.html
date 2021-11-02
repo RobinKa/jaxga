@@ -73,8 +73,8 @@
     <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="kc">None</span>
 
 
-<span class="nd">@cache</span>
-<span class="k">def</span> <span class="nf">_reduce_bases</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">metric</span><span class="p">):</span>
+<div class="viewcode-block" id="reduce_bases"><a class="viewcode-back" href="../../jaxga.html#jaxga.jaxga.reduce_bases">[docs]</a><span class="nd">@cache</span>
+<span class="k">def</span> <span class="nf">reduce_bases</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">metric</span><span class="p">):</span>
     <span class="n">combined</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
 
     <span class="c1"># Bring into normal order:</span>
@@ -86,7 +86,7 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">done</span><span class="p">:</span>
             <span class="n">sign</span> <span class="o">*=</span> <span class="n">metric</span><span class="p">(</span><span class="n">combined_elem</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">sign</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">combined</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sign</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">combined</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="is_scalar_index"><a class="viewcode-back" href="../../jaxga.html#jaxga.jaxga.is_scalar_index">[docs]</a><span class="k">def</span> <span class="nf">is_scalar_index</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
@@ -100,7 +100,7 @@
 <div class="viewcode-block" id="dual_blade_index"><a class="viewcode-back" href="../../jaxga.html#jaxga.jaxga.dual_blade_index">[docs]</a><span class="k">def</span> <span class="nf">dual_blade_index</span><span class="p">(</span><span class="n">blade_index</span><span class="p">,</span> <span class="n">dims</span><span class="p">):</span>
     <span class="n">pss</span> <span class="o">=</span> <span class="n">pseudoscalar_index</span><span class="p">(</span><span class="n">dims</span><span class="p">)</span>
     <span class="n">blade_index_reverse</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">blade_index</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">_reduce_bases</span><span class="p">(</span><span class="n">blade_index_reverse</span><span class="p">,</span> <span class="n">pss</span><span class="p">,</span> <span class="n">positive_signature</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">reduce_bases</span><span class="p">(</span><span class="n">blade_index_reverse</span><span class="p">,</span> <span class="n">pss</span><span class="p">,</span> <span class="n">positive_signature</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="reverse_indices"><a class="viewcode-back" href="../../jaxga.html#jaxga.jaxga.reverse_indices">[docs]</a><span class="k">def</span> <span class="nf">reverse_indices</span><span class="p">(</span><span class="n">blade_indices</span><span class="p">):</span>

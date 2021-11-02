@@ -29,11 +29,13 @@ a = MultiVector(
     values=2 * jnp.ones([1], dtype=jnp.float32),
     indices=((1,),)
 )
+# Alternative: 2 * MultiVector.e(1)
 
 b = MultiVector(
     values=4 * jnp.ones([2], dtype=jnp.float32),
     indices=((2, 3),)
 )
+# Alternative: 4 * MultiVector.e(2, 3)
 
 c = a * b
 print(c)
@@ -68,7 +70,7 @@ Output: `C indices: ((1, 2, 3),) C values: [8.]`
 MultiVectors with different signatures is undefined.
 - The [jaxga.signatures](https://robinka.github.io/jaxga/jaxga.html#module-jaxga.signatures) submodule contains a few predefined signature functions.
 - `get_mv_multiply` and similar functions cache their result by their inputs.
-- The [flaxmodules](https://robinka.github.io/jaxga/jaxga.flaxmodules.html) provides [flax](https://github.com/google/flax) (a popular neural network library for jax) modules with
+- The [flaxmodules](https://robinka.github.io/jaxga/jaxga.flaxmodules.html) submodule provides [flax](https://github.com/google/flax) (a popular neural network library for jax) modules with
 Geometric Algebra operations.
 - Because we don't deal with a specific algebra, the [dual](https://robinka.github.io/jaxga/jaxga.html#jaxga.mv.MultiVector.dual) needs an input that specifies the dimensionality of the space in which we want to find the dual element.
 

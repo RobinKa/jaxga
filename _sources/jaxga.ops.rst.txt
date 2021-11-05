@@ -52,6 +52,14 @@ jaxga.ops.reduce\_same module
    :undoc-members:
    :show-inheritance:
 
+jaxga.ops.sandwich module
+-------------------------
+
+.. automodule:: jaxga.ops.sandwich
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 jaxga.ops.select module
 -----------------------
 

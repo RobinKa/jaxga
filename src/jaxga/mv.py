@@ -1,3 +1,4 @@
+from .ops.sandwich import get_mv_sandwich
 from .ops.inverse import get_mv_inverse
 from .ops.dual import get_mv_dual
 from .ops.reduce_same import get_mv_reduce_same
@@ -13,10 +14,12 @@ import jax.numpy as jnp
 
 class MultiVector:
     def e(*indices, **kwargs):
+        signature = kwargs["signature"] if "signature" in kwargs else positive_signature
+        batch_shape = ((1,) + tuple(kwargs["batch_shape"])) if "batch_shape" in kwargs else (1,)
         return MultiVector(
-            values=jnp.ones([1], dtype=jnp.float32),
+            values=jnp.ones(batch_shape, dtype=jnp.float32),
             indices=(tuple(indices),),
-            signature=kwargs["signature"] if "signature" in kwargs else positive_signature
+            signature=signature
         )
 
     def __init__(self, values, indices, signature=positive_signature):
@@ -25,13 +28,35 @@ class MultiVector:
         self.signature = signature
 
     def __add__(self, other):
+        if not isinstance(other, MultiVector):
+            other = MultiVector.e() * other
+
         mv_add, out_indices = get_mv_add(self.indices, other.indices)
         out_values = mv_add(self.values, other.values)
         return MultiVector(values=out_values, indices=out_indices, signature=self.signature)
 
+    def __radd__(self, other):
+        if not isinstance(other, MultiVector):
+            other = MultiVector.e() * other
+
+        mv_add, out_indices = get_mv_add(other.indices, self.indices)
+        out_values = mv_add(other.values, self.values)
+        return MultiVector(values=out_values, indices=out_indices, signature=self.signature)
+
     def __sub__(self, other):
+        if not isinstance(other, MultiVector):
+            other = MultiVector.e() * other
+
         mv_add, out_indices = get_mv_add(self.indices, other.indices)
         out_values = mv_add(self.values, -other.values)
+        return MultiVector(values=out_values, indices=out_indices, signature=self.signature)
+
+    def __rsub__(self, other):
+        if not isinstance(other, MultiVector):
+            other = MultiVector.e() * other
+
+        mv_add, out_indices = get_mv_add(other.indices, self.indices)
+        out_values = mv_add(other.values, -self.values)
         return MultiVector(values=out_values, indices=out_indices, signature=self.signature)
 
     def __mul__(self, other):
@@ -67,6 +92,12 @@ class MultiVector:
 
     def __neg__(self):
         return MultiVector(values=-self.values, indices=reverse_indices(self.indices), signature=self.signature)
+
+    def sandwich(self, other):
+        mv_sandwich, out_indices = get_mv_sandwich(
+                self.indices, other.indices, self.signature)
+        out_values = mv_sandwich(self.values, other.values)
+        return MultiVector(values=out_values, indices=out_indices, signature=self.signature)
 
     def inverse(self):
         mv_inv, inv_indices = get_mv_inverse(self.indices, self.signature)

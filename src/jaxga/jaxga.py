@@ -71,4 +71,4 @@ def dual_blade_index(blade_index, dims):
 
 
 def reverse_indices(blade_indices):
-    return [tuple(reversed(blade_index)) for blade_index in blade_indices]
+    return tuple(tuple(reversed(blade_index)) for blade_index in blade_indices)

@@ -37,11 +37,12 @@
 <span class="kn">from</span> <span class="nn">.select</span> <span class="kn">import</span> <span class="n">get_mv_select</span>
 <span class="kn">from</span> <span class="nn">.add</span> <span class="kn">import</span> <span class="n">get_mv_add</span>
 <span class="kn">from</span> <span class="nn">..jaxga</span> <span class="kn">import</span> <span class="n">is_scalar_index</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
 
 
 <div class="viewcode-block" id="get_mv_inverse"><a class="viewcode-back" href="../../../jaxga.ops.html#jaxga.ops.inverse.get_mv_inverse">[docs]</a><span class="nd">@cache</span>
 <span class="k">def</span> <span class="nf">get_mv_inverse</span><span class="p">(</span><span class="n">a_blade_indices</span><span class="p">,</span> <span class="n">signature</span><span class="p">):</span>
-    <span class="n">dims</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">a_blade_indices</span><span class="p">))</span>
+    <span class="n">dims</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="n">a_blade_indices</span><span class="p">)))</span>
     <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="p">((</span><span class="n">dims</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
 
     <span class="n">last_ind</span> <span class="o">=</span> <span class="n">a_blade_indices</span>

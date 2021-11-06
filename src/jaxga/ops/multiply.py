@@ -43,18 +43,21 @@ def get_mv_multiply(a_blade_indices, b_blade_indices, signature, prod="gp"):
     else:
         out_size = max(out_indices) + 1
 
+        indices_a = jnp.array(indices_a)
+        indices_b = jnp.array(indices_b)
+        out_signs = jnp.array(out_signs, dtype=jnp.float32)
+        out_indices = jnp.array(out_indices)
+
         def _values_mv_mul(a_values, b_values):
-            out_batch_shape = jnp.broadcast_shapes(
-                a_values.shape[1:], b_values.shape[1:]
-            )
-            out_values = jnp.zeros(
-                [out_size, *out_batch_shape], dtype=jnp.float32
+            num_extra_dims = max(len(a_values), len(b_values)) - 1
+
+            segment_out_values = (
+                jnp.reshape(out_signs, (-1,) + (1,) * num_extra_dims) * a_values[indices_a] * b_values[indices_b]
             )
 
-            for index_a, index_b, out_sign, out_index in zip(indices_a, indices_b, out_signs, out_indices):
-                out_values = out_values.at[out_index].add(
-                    out_sign * a_values[index_a] * b_values[index_b]
-                )
+            out_values = jax.ops.segment_sum(
+                segment_out_values, out_indices, num_segments=out_size
+            )
 
             return out_values
 

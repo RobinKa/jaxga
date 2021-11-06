@@ -4,11 +4,12 @@ from .multiply import get_mv_multiply
 from .select import get_mv_select
 from .add import get_mv_add
 from ..jaxga import is_scalar_index
+import itertools
 
 
 @cache
 def get_mv_inverse(a_blade_indices, signature):
-    dims = len(set(a_blade_indices))
+    dims = len(set(itertools.chain.from_iterable(a_blade_indices)))
     n = 2 ** ((dims + 1) // 2)
 
     last_ind = a_blade_indices

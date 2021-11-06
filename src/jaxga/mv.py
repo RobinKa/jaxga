@@ -91,7 +91,7 @@ class MultiVector:
         return MultiVector(values=self.values, indices=reverse_indices(self.indices), signature=self.signature)
 
     def __neg__(self):
-        return MultiVector(values=-self.values, indices=reverse_indices(self.indices), signature=self.signature)
+        return MultiVector(values=-self.values, indices=self.indices, signature=self.signature)
 
     def sandwich(self, other):
         mv_sandwich, out_indices = get_mv_sandwich(
